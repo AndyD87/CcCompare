@@ -1,16 +1,16 @@
-# CcDirectoryExport
+# CcCompare
 
 Compare two directories and extract all differents in an extra output directory.
 
 Execute following command for comparing two directories
 
-    CcDirectoryExport [OriginalDir] [ModifiedDir] [OutputDir]
+    CcCompare [OriginalDir] [ModifiedDir] [OutputDir]
 
 All files wich are new in ModifiedDir will be copied to **[Output]/new**
 All files wich are deleted in ModifiedDir will be copied to **[Output]/deleted**
 All files wich are different in ModifiedDir will be copied to **[Output]/modified**
 
-# Build CcDirectoryExport
+# Build CcCompare
 
 A little overview:
 * Language: c++11
@@ -48,5 +48,5 @@ Here an example:
 
 ## Licence
 
-Author of CcDirectoryExport-Framework: (Andreas Dirmeier)[http://adirmeier.de]
+Author of CcCompare-Framework: (Andreas Dirmeier)[http://adirmeier.de]
 This application is licenced under LGPL v3. Look at COPYING and COPYING.LESSER for further information.

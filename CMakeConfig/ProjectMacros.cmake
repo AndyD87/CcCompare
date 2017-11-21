@@ -3,7 +3,7 @@ SET(CCDIRECTORY_EXPORT_CMAKECONFIG_DIR ${CMAKE_CURRENT_SOURCE_DIR}/CMakeConfig)
 ################################################################################
 # Setup default installation targets for a project
 ################################################################################
-MACRO (CcDirectoryExportSetInstall ProjectName )
+MACRO (CcCompareSetInstall ProjectName )
   set_property( TARGET ${ProjectName} APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES
                 $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR};${CMAKE_CURRENT_BINARY_DIR}>
               )
@@ -33,7 +33,7 @@ ENDMACRO()
 ################################################################################
 # Add Xml Configurations to cmake install
 ################################################################################
-MACRO (CcDirectoryExportSetInstallConfig ProjectName )
+MACRO (CcCompareSetInstallConfig ProjectName )
   INSTALL( DIRECTORY    ${CMAKE_CURRENT_SOURCE_DIR}/config/
            DESTINATION  config/${ProjectName}
            PATTERN "*.xml" )
@@ -50,9 +50,9 @@ MACRO (CcSetOSVersion ProjectName )
 ENDMACRO()
 
 ################################################################################
-# Setup Include Directorys for importing CcDirectoryExport
+# Setup Include Directorys for importing CcCompare
 ################################################################################
-MACRO( CcDirectoryExportTargetIncludeDirs ProjectName )
+MACRO( CcCompareTargetIncludeDirs ProjectName )
   foreach(DIR ${ARGN})
     LIST(APPEND DIRS ${DIR} )
     target_include_directories(${ProjectName} PUBLIC $<BUILD_INTERFACE:${DIR}> )
@@ -65,16 +65,16 @@ ENDMACRO()
 ################################################################################
 # Generate RC-File for MSVC Builds, output is a Version.h File in current dir
 ################################################################################
-MACRO( CcDirectoryExportGenerateRcFileToCurrentDir ProjectName )
+MACRO( CcCompareGenerateRcFileToCurrentDir ProjectName )
   SET(PROJECT_NAME "${ProjectName}")
-  configure_file( ${CCDIRECTORY_EXPORT_CMAKECONFIG_DIR}/InputFiles/CcDirectoryExportVersion.rc.in ${CMAKE_CURRENT_SOURCE_DIR}/CcDirectoryExportVersion.rc @ONLY)
+  configure_file( ${CCDIRECTORY_EXPORT_CMAKECONFIG_DIR}/InputFiles/ProjectVersion.rc.in ${CMAKE_CURRENT_SOURCE_DIR}/CcCompareVersion.rc @ONLY)
 ENDMACRO()
 
 ################################################################################
-# Rename Endings of Project output file to CcDirectoryExport default.
+# Rename Endings of Project output file to CcCompare default.
 # CURRENTLY NOT IN USE!!
 ################################################################################
-MACRO( CcDirectoryExportProjectNaming ProjectName )
+MACRO( CcCompareProjectNaming ProjectName )
   set_target_properties(${ProjectName} PROPERTIES OUTPUT_NAME "${ProjectName}" )
   # Debug becomes and d at the end.
   set_target_properties(${ProjectName} PROPERTIES OUTPUT_NAME_DEBUG "${ProjectName}d" )

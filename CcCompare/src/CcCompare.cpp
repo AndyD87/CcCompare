@@ -1,18 +1,18 @@
 /*
-* This file is part of CcDirectoryExport.
+* This file is part of CcCompare.
 *
-* CcDirectoryExport is free software: you can redistribute it and/or modify
+* CcCompare is free software: you can redistribute it and/or modify
 * it under the terms of the GNU Lesser General Public License as published by
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* CcDirectoryExport is distributed in the hope that it will be useful,
+* CcCompare is distributed in the hope that it will be useful,
 * but WITHOUT ANY WARRANTY; without even the implied warranty of
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 * GNU Lesser General Public License for more details.
 *
 * You should have received a copy of the GNU Lesser General Public License
-* along with CcDirectoryExport.  If not, see <http://www.gnu.org/licenses/>.
+* along with CcCompare.  If not, see <http://www.gnu.org/licenses/>.
 **/
 /**
 * @file
@@ -22,30 +22,29 @@
 * @version   0.01
 * @date      2016-04
 * @par       Language   C++ ANSI V3
-* @brief     Implemtation of class CcDirectoryExport
+* @brief     Implemtation of class CcCompare
 */
 #include "CcKernel.h"
 #include "CcDirectory.h"
-#include "CcDirectoryExport.h"
+#include "CcCompare.h"
 #include "CcFile.h"
 #include "CcConsole.h"
-#include "CcError.h"
 
-CcDirectoryExport::CcDirectoryExport(const CcDirectoryExport& oToCopy)
+CcCompare::CcCompare(const CcCompare& oToCopy)
 {
   operator=(oToCopy);
 }
 
-CcDirectoryExport::CcDirectoryExport(CcDirectoryExport&& oToMove)
+CcCompare::CcCompare(CcCompare&& oToMove)
 {
   operator=(std::move(oToMove));
 }
 
-CcDirectoryExport::~CcDirectoryExport(void)
+CcCompare::~CcCompare(void)
 {
 }
 
-void CcDirectoryExport::run()
+void CcCompare::run()
 {
   if (m_oArguments.size() == 4)
   {
@@ -71,18 +70,18 @@ void CcDirectoryExport::run()
     else
     {
       CcConsole::writeLine("At least one directory not existing");
-      setExitCode(EError::FSDirNotFound);
+      setExitCode(EStatus::FSDirNotFound);
     }
   }
   else
   {
     CcConsole::writeLine("Wrong number of Paramters, 3 are required");
     CcConsole::writeLine("  [Source] [Modified] [Output]");
-    setExitCode(EError::CommandRequiredParameter);
+    setExitCode(EStatus::CommandRequiredParameter);
   }
 }
 
-void CcDirectoryExport::compareDirectories(const CcString& sSource)
+void CcCompare::compareDirectories(const CcString& sSource)
 {
   CcString sCompareSource = m_sSource;
   CcString sCompareModified = m_sModified;
@@ -132,7 +131,7 @@ void CcDirectoryExport::compareDirectories(const CcString& sSource)
   }
 }
 
-bool CcDirectoryExport::copyNew(const CcString& sPath, const CcString& sFileName)
+bool CcCompare::copyNew(const CcString& sPath, const CcString& sFileName)
 {
   bool bRet = false;
   CcString sFilePathFrom = m_sModified;
@@ -150,7 +149,7 @@ bool CcDirectoryExport::copyNew(const CcString& sPath, const CcString& sFileName
   return bRet;
 }
 
-bool CcDirectoryExport::copyModified(const CcString& sPath, const CcString& sFileName)
+bool CcCompare::copyModified(const CcString& sPath, const CcString& sFileName)
 {
   bool bRet = false;
   CcString sFilePathFrom = m_sModified;
@@ -168,7 +167,7 @@ bool CcDirectoryExport::copyModified(const CcString& sPath, const CcString& sFil
   return bRet;
 }
 
-bool CcDirectoryExport::copyDeleted(const CcString& sPath, const CcString& sFileName)
+bool CcCompare::copyDeleted(const CcString& sPath, const CcString& sFileName)
 {
   bool bRet = false;
   CcString sFilePathFrom = m_sSource;
@@ -187,13 +186,13 @@ bool CcDirectoryExport::copyDeleted(const CcString& sPath, const CcString& sFile
 }
 
 
-CcDirectoryExport& CcDirectoryExport::operator=(const CcDirectoryExport& oToCopy)
+CcCompare& CcCompare::operator=(const CcCompare& oToCopy)
 {
   CCUNUSED(oToCopy);
   return *this;
 }
 
-CcDirectoryExport& CcDirectoryExport::operator=(CcDirectoryExport&& oToMove)
+CcCompare& CcCompare::operator=(CcCompare&& oToMove)
 {
   if (this != &oToMove)
   {

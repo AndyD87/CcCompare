@@ -1,31 +1,31 @@
 /*
- * This file is part of CcDirectoryExport.
+ * This file is part of CcCompare.
  *
- * CcDirectoryExport is free software: you can redistribute it and/or modify
+ * CcCompare is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * CcDirectoryExport is distributed in the hope that it will be useful,
+ * CcCompare is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public License
- * along with CcDirectoryExport.  If not, see <http://www.gnu.org/licenses/>.
+ * along with CcCompare.  If not, see <http://www.gnu.org/licenses/>.
  **/
 /**
- * @page      CcDirectoryExport
+ * @page      CcCompare
  * @copyright Andreas Dirmeier (C) 2017
  * @author    Andreas Dirmeier
  * @par       Web: http://coolcow.de
  * @version   0.01
  * @date      2016-04
  * @par       Language   C++ ANSI V3
- * @brief     Class CcDirectoryExport
+ * @brief     Class CcCompare
  **/
-#ifndef CcDirectoryExport_H_
-#define CcDirectoryExport_H_
+#ifndef CcCompare_H_
+#define CcCompare_H_
 
 #include "CcBase.h"
 #include "CcUserList.h"
@@ -35,36 +35,36 @@
 /**
  * @brief Class impelmentation
  */
-class CcDirectoryExport : public CcApp
+class CcCompare : public CcApp
 {
 public:
   /**
    * @brief Constructor
    */
-  CcDirectoryExport(void) {}
+  CcCompare(void) {}
   /**
    * @brief Constructor with Arguments
    */
-  CcDirectoryExport( const CcArguments& oArguments ) : m_oArguments(oArguments) {}
+  CcCompare( const CcArguments& oArguments ) : m_oArguments(oArguments) {}
 
   /**
    * @brief CopyConstructor
    */
-  CcDirectoryExport( const CcDirectoryExport& oToCopy );
+  CcCompare( const CcCompare& oToCopy );
 
   /**
    * @brief MoveConstructor
    */
-  CcDirectoryExport( CcDirectoryExport&& oToMove );
+  CcCompare( CcCompare&& oToMove );
 
   /**
    * @brief Destructor
    */
-  virtual ~CcDirectoryExport( void );
+  virtual ~CcCompare( void );
 
 
-  CcDirectoryExport& operator=(const CcDirectoryExport& oToCopy);
-  CcDirectoryExport& operator=(CcDirectoryExport&& oToMove);
+  CcCompare& operator=(const CcCompare& oToCopy);
+  CcCompare& operator=(CcCompare&& oToMove);
 
   void run() override;
 
@@ -80,4 +80,4 @@ private:
   CcString m_sOutput;
 };
 
-#endif /* CcDirectoryExport_H_ */
+#endif /* CcCompare_H_ */
